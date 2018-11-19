@@ -1,4 +1,4 @@
-/*! Catalog v1.0.0 undefined */
+/*! Catalog v1.0.1 undefined */
 import PropTypes from 'prop-types';
 import createEmotion from 'create-emotion';
 import React, { Component, Children, PureComponent, createElement, isValidElement } from 'react';
@@ -1033,6 +1033,10 @@ var IframeResizer = function (_React$Component) {
     this.updateIframe(this.props);
     this.resizeIframe(this.props);
   };
+  // componentDidUpdate() {
+  //   this.updateIframe(this.props);
+  //   this.resizeIframe(this.props);
+  // }
   // UNSAFE_componentWillReceiveProps(nextProps) {
   //   // can replace content if we got new props
   //   this.updateIframe(nextProps);
@@ -1137,8 +1141,6 @@ var IframeResizer = function (_React$Component) {
 
   IframeResizer.prototype.onLoad = function onLoad() {
     this.injectIframeResizerUrl();
-    // DISABLED because it's causing a loading loop :(
-    // if (this.props.onIframeLoaded) this.props.onIframeLoaded();
   };
 
   IframeResizer.prototype.resizeIframe = function resizeIframe(props) {

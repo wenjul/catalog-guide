@@ -21,6 +21,10 @@ class IframeResizer extends React.Component {
     this.updateIframe(this.props);
     this.resizeIframe(this.props);
   }
+  // componentDidUpdate() {
+  //   this.updateIframe(this.props);
+  //   this.resizeIframe(this.props);
+  // }
   // UNSAFE_componentWillReceiveProps(nextProps) {
   //   // can replace content if we got new props
   //   this.updateIframe(nextProps);
@@ -140,11 +144,9 @@ class IframeResizer extends React.Component {
     }`;
     injectTarget.appendChild(customOptionsElement);
   }
-  onLoad() {
+  onLoad = () => {
     this.injectIframeResizerUrl();
-    // DISABLED because it's causing a loading loop :(
-    // if (this.props.onIframeLoaded) this.props.onIframeLoaded();
-  }
+  };
   resizeIframe(props) {
     const frame = this.frame;
     if (!frame) return;
