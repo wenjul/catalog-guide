@@ -13,7 +13,7 @@ const baseTextStyle = {
 
 // Modular scale font size helper; level can be negative (for smaller font sizes) and positive (for larger font sizes) integers; level 0 === baseFontSize
 export const getFontSize = ({ baseFontSize, msRatio }, level = 0) =>
-  `${baseFontSize / 16 * Math.pow(msRatio, level)}rem`;
+  `${(baseFontSize / 16) * Math.pow(msRatio, level)}rem`;
 
 // Exports
 
@@ -23,9 +23,9 @@ export const text = (theme, level = 0) => ({
   color: theme.textColor,
   fontFamily: theme.fontFamily,
   fontSize: getFontSize(theme, level),
-  lineHeight: theme.msRatio * theme.msRatio
+  lineHeight: 1.6
+  // lineHeight: theme.msRatio * theme.msRatio * theme.msRatio
 });
-
 // Heading font style
 export const heading = (theme, level = 0) => ({
   ...baseTextStyle,

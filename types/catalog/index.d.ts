@@ -66,6 +66,7 @@ export interface Theme {
   sidebarColorHeading: string;
   bgLight: string;
   bgDark: string;
+  bgSourceCode: string;
   codeStyles: { [key: string]: { [key: string]: string } };
   checkerboardPatternLight: string;
   checkerboardPatternDark: string;

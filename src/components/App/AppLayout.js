@@ -90,6 +90,7 @@ const getStyles = (theme, sidebarVisible) => ({
     flexDirection: "column",
     position: "relative",
     zIndex: 0, // To create a new stacking context, see #223.
+    alignItems: "center",
     "@media (min-width: 1000px)": {
       paddingLeft: SIDEBAR_WIDTH
     }

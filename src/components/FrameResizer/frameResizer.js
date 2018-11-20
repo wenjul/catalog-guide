@@ -20,6 +20,7 @@ class IframeResizer extends React.Component {
     // can't update until we have a mounted iframe
     this.updateIframe(this.props);
     this.resizeIframe(this.props);
+    this.injectIframeResizerUrl();
   }
   // componentDidUpdate() {
   //   this.updateIframe(this.props);
@@ -101,6 +102,8 @@ class IframeResizer extends React.Component {
         doc.body.appendChild(scriptTag);
       }
     });
+
+    this.injectIframeResizerUrl();
   }
   // inject the iframe resizer "content window" script
   injectIframeResizerUrl() {
@@ -144,9 +147,11 @@ class IframeResizer extends React.Component {
     }`;
     injectTarget.appendChild(customOptionsElement);
   }
-  onLoad = () => {
+
+  onLoad() {
     this.injectIframeResizerUrl();
-  };
+  }
+
   resizeIframe(props) {
     const frame = this.frame;
     if (!frame) return;
@@ -166,7 +171,6 @@ class IframeResizer extends React.Component {
         frameBorder={frameBorder}
         className={className}
         style={style}
-        onLoad={this.onLoad}
       />
     );
   }
@@ -207,7 +211,7 @@ IframeResizer.defaultProps = {
     // resizedCallback: () => { console.log('resized!'); },
   },
   iframeResizerUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js",
+    "http://imgcache.qq.com/open_proj/proj_qcloud_v2/library/iframeResizer.contentWindow.min.js",
   // misc props to pass through to iframe
   frameBorder: 0,
   style: {

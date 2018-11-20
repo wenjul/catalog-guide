@@ -194,16 +194,50 @@ const pages = [
   }
 ];
 
+const theme = {
+  // Colors
+  background: "#F9F9F9",
+  textColor: "#333333",
+  codeColor: "#00263E",
+  linkColor: "#006EFF",
+
+  // NavigationBar background color, but also sometimes used as a foreground
+  // or border color.
+  lightColor: "#D6D6D6",
+
+  // Used in PageHeader
+  pageHeadingBackground: "#13161f",
+  pageHeadingTextColor: "#fff",
+
+  // Used in Menu and PageHeader to make sure the top parts have
+  // the same height.
+  pageHeadingHeight: 145,
+
+  // Used for navigation bar
+  navBarBackground: "#F2F2F2",
+  navBarTextColor: "#202124",
+
+  // Used in ResponsiveTabs (tab text), Download specimen (title text).
+  // Typography: headings.
+  brandColor: "#202124",
+
+  sidebarColor: "#FFFFFF",
+  sidebarColorText: "#202124",
+  sidebarColorTextActive: "#006EFF",
+  sidebarColorLine: "#EBEBEB",
+  sidebarColorHeading: "#202124",
+
+  // Used in the html, react, and image specimens.
+  bgLight: "#FFFFFF",
+  bgDark: "#333333"
+};
+
 ReactDOM.render(
   <Catalog
     title="Catalog"
     useBrowserHistory
     logoSrc={logo}
-    theme={
-      {
-        // Uses default theme
-      }
-    }
+    theme={theme}
     pages={pages}
     styles={[
       "https://imgcache.qq.com/open_proj/proj_qcloud_v2/bee-ui-docs/catalog/static/prism.css"

@@ -36,6 +36,7 @@ export default {
   // Used in the html, react, and image specimens.
   bgLight: "#F2F2F2",
   bgDark: "#333333",
+  bgSourceCode: "#F4F2F0",
 
   // Keys appear to be PrismJS token types.
   codeStyles: {

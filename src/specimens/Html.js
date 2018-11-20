@@ -49,6 +49,7 @@ function getStyle(theme) {
       width: "100%",
       position: "relative",
       padding: "20px 0 20px 20px",
+      backgroundColor: theme.bgSourceCode,
       "& pre": {
         padding: "0 !important",
         margin: "0 !important",
@@ -82,12 +83,10 @@ function getStyle(theme) {
       right: 20,
       cursor: "pointer",
       color: theme.textColor,
-      backgroundColor: "white",
       width: 30,
       height: 30,
       lineHeight: "35px",
-      textAlign: "center",
-      borderRadius: "50%"
+      textAlign: "center"
     },
     copyIcon: { fill: "#888888", ":hover": { fill: theme.brandColor } }
   };

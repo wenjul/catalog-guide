@@ -1,4 +1,4 @@
-/*! Catalog v1.0.1 undefined */
+/*! Catalog v1.0.3 undefined */
 import PropTypes from 'prop-types';
 import createEmotion from 'create-emotion';
 import React, { Component, Children, PureComponent, createElement, isValidElement } from 'react';
@@ -137,6 +137,7 @@ var DefaultTheme = {
   // Used in the html, react, and image specimens.
   bgLight: "#F2F2F2",
   bgDark: "#333333",
+  bgSourceCode: "#F4F2F0",
 
   // Keys appear to be PrismJS token types.
   codeStyles: {
@@ -291,10 +292,10 @@ var text = function text(theme) {
     color: theme.textColor,
     fontFamily: theme.fontFamily,
     fontSize: getFontSize(theme, level),
-    lineHeight: theme.msRatio * theme.msRatio
+    lineHeight: 1.6
+    // lineHeight: theme.msRatio * theme.msRatio * theme.msRatio
   });
 };
-
 // Heading font style
 var heading = function heading(theme) {
   var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -1032,6 +1033,7 @@ var IframeResizer = function (_React$Component) {
     // can't update until we have a mounted iframe
     this.updateIframe(this.props);
     this.resizeIframe(this.props);
+    this.injectIframeResizerUrl();
   };
   // componentDidUpdate() {
   //   this.updateIframe(this.props);
@@ -1101,6 +1103,8 @@ var IframeResizer = function (_React$Component) {
         doc.body.appendChild(scriptTag);
       }
     });
+
+    this.injectIframeResizerUrl();
   };
   // inject the iframe resizer "content window" script
 
@@ -1170,8 +1174,7 @@ var IframeResizer = function (_React$Component) {
       id: id,
       frameBorder: frameBorder,
       className: className,
-      style: style,
-      onLoad: this.onLoad
+      style: style
     });
   };
 
@@ -1212,7 +1215,7 @@ IframeResizer.defaultProps = {
     // initCallback: () => { console.log('ready!'); },
     // resizedCallback: () => { console.log('resized!'); },
   },
-  iframeResizerUrl: "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js",
+  iframeResizerUrl: "http://imgcache.qq.com/open_proj/proj_qcloud_v2/library/iframeResizer.contentWindow.min.js",
   // misc props to pass through to iframe
   frameBorder: 0,
   style: {
@@ -2348,6 +2351,7 @@ function getStyle$3(theme) {
       width: "100%",
       position: "relative",
       padding: "20px 0 20px 20px",
+      backgroundColor: theme.bgSourceCode,
       "& pre": {
         padding: "0 !important",
         margin: "0 !important",
@@ -2381,12 +2385,10 @@ function getStyle$3(theme) {
       right: 20,
       cursor: "pointer",
       color: theme.textColor,
-      backgroundColor: "white",
       width: 30,
       height: 30,
       lineHeight: "35px",
-      textAlign: "center",
-      borderRadius: "50%"
+      textAlign: "center"
     },
     copyIcon: { fill: "#888888", ":hover": { fill: theme.brandColor } }
   };
@@ -4567,15 +4569,23 @@ var PageHeader = function (_Component) {
         boxSizing: "border-box",
         position: "relative",
         height: theme.pageHeadingHeight,
-        background: theme.pageHeadingBackground
+        background: theme.pageHeadingBackground,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        "@media (min-width: 640px)": {
+          padding: "0 10px 0 20px"
+        },
+        "@media (min-width: 1000px)": {
+          padding: "0 30px 0 40px"
+        }
       },
       innerHeader: {
-        position: "absolute",
-        bottom: 21,
-        left: 21,
-        "@media (min-width: 1000px)": {
-          left: 42
-        }
+        boxSizing: "border-box",
+        width: "100%",
+        maxWidth: "64em"
       },
       superTitle: _extends({}, heading(theme, 1), {
         color: theme.pageHeadingTextColor,
@@ -4699,6 +4709,7 @@ var getStyles$1 = function getStyles(theme, sidebarVisible) {
       flexDirection: "column",
       position: "relative",
       zIndex: 0, // To create a new stacking context, see #223.
+      alignItems: "center",
       "@media (min-width: 1000px)": {
         paddingLeft: SIDEBAR_WIDTH
       }
