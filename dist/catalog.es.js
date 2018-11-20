@@ -4569,23 +4569,15 @@ var PageHeader = function (_Component) {
         boxSizing: "border-box",
         position: "relative",
         height: theme.pageHeadingHeight,
-        background: theme.pageHeadingBackground,
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        "@media (min-width: 640px)": {
-          padding: "0 10px 0 20px"
-        },
-        "@media (min-width: 1000px)": {
-          padding: "0 30px 0 40px"
-        }
+        background: theme.pageHeadingBackground
       },
       innerHeader: {
-        boxSizing: "border-box",
-        width: "100%",
-        maxWidth: "64em"
+        position: "absolute",
+        bottom: 21,
+        left: 21,
+        "@media (min-width: 1000px)": {
+          left: 42
+        }
       },
       superTitle: _extends({}, heading(theme, 1), {
         color: theme.pageHeadingTextColor,
@@ -4709,7 +4701,6 @@ var getStyles$1 = function getStyles(theme, sidebarVisible) {
       flexDirection: "column",
       position: "relative",
       zIndex: 0, // To create a new stacking context, see #223.
-      alignItems: "center",
       "@media (min-width: 1000px)": {
         paddingLeft: SIDEBAR_WIDTH
       }
