@@ -1,6 +1,6 @@
 {
     "name": "catalog-guide",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Create living style guides using Markdown or React",
     "keywords": [
         "styleguide",
