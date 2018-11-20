@@ -5,7 +5,6 @@
 ```html
 dark: true
 frameStyles: ['http://119.29.8.64/open_proj/proj_qcloud_v2/bee-ui-docs/catalog/compatible.css']
-frameScripts: ['https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js']
 ---
 <div class="tc-15-page">
     <div class="tc-15-page-state"><span class="tc-15-page-text">已选<strong>6</strong>项，共<strong>270</strong>项</span>
@@ -80,7 +79,6 @@ frameStyles: ['http://119.29.8.64/open_proj/proj_qcloud_v2/bee-ui-docs/catalog/c
 
 ```html
 plain: false
-frameStyles: ['https://imgcache.qq.com/open_proj/proj_qcloud_v2/bee-v2/css/bee.css']
 ---
 <div class="pagination">
     <a href="javascript:;" class="btn-page page-prev btn-page-disabled" title="上一条"><i class="icon-page-prev"></i></a>
