@@ -38,6 +38,10 @@ export default {
   bgDark: "#333333",
   bgSourceCode: "#F4F2F0",
 
+  // inlinecode && code border
+  tagBorder: "#eee",
+  codeBorder: "#eee",
+
   // Keys appear to be PrismJS token types.
   codeStyles: {
     tag: { color: "#FF5555" },

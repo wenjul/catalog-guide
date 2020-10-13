@@ -67,7 +67,7 @@ export const Strong = styled("strong", {
 });
 export const CodeSpan = styled("code", (props, { theme }) => ({
   background: theme.bgLight,
-  border: `1px solid #eee`,
+  border: `1px solid ${theme.tagBorder}`,
   borderRadius: 1,
   display: "inline-block",
   fontFamily: theme.fontMono,

@@ -9,6 +9,7 @@ class CatalogContext extends Component {
   getChildContext() {
     const {
       title,
+      subTitle,
       theme,
       responsiveSizes,
       logoSrc,
@@ -31,6 +32,7 @@ class CatalogContext extends Component {
         theme,
         responsiveSizes,
         title,
+        subTitle,
         pages: pages.filter(p => !p.hideFromMenu),
         pagePaths: new Set(pages.map(p => p.path)),
         pageTree,

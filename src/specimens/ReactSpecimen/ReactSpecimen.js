@@ -150,7 +150,11 @@ class ReactSpecimen extends Component {
 
   render() {
     const {
-      catalog: { page: { imports }, theme, responsiveSizes },
+      catalog: {
+        page: { imports },
+        theme,
+        responsiveSizes
+      },
       children,
       frame,
       sourceText,

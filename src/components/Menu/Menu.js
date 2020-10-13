@@ -8,7 +8,7 @@ import Link from "../Link/Link";
 import ListItem from "./ListItem";
 
 export function style(theme) {
-  const logoBottomMargin = getFontSize(theme, 5);
+  const logoBottomMargin = getFontSize(theme, 2);
 
   return {
     bar: {
@@ -75,17 +75,19 @@ export function style(theme) {
 
 class Menu extends React.Component {
   render() {
-    const { theme, pageTree, logoSrc, title, basePath } = this.props;
+    const { theme, pageTree, logoSrc, title, basePath, subTitle } = this.props;
 
     const currentStyle = style(theme);
 
     const titleString = title ? title : "";
 
+    const subTitleString = subTitle ? subTitle : "";
+
     return (
       <div className={css(currentStyle.bar)}>
         <div className={css({ flexGrow: 1 })}>
-          <Link to={basePath} className={css({ textDecoration: "none" })}>
-            <h1 className={css(currentStyle.h1)}>
+          <h1 className={css(currentStyle.h1)}>
+            <Link to={basePath} className={css({ textDecoration: "none" })}>
               {logoSrc ? (
                 <div
                   className={css({
@@ -100,8 +102,10 @@ class Menu extends React.Component {
               ) : (
                 <div className={css(currentStyle.title)}>{titleString}</div>
               )}
-            </h1>
-          </Link>
+            </Link>
+            <div className>{subTitleString}</div>
+          </h1>
+
           <ul className={css(currentStyle.list)}>
             {pageTree.filter(page => !page.hideFromMenu).map(page => (
               <ListItem key={page.id} page={page} theme={theme} />
@@ -118,7 +122,8 @@ Menu.propTypes = {
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   basePath: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  subTitle: PropTypes.string
 };
 
 Menu.defaultProps = {
