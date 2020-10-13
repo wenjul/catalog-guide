@@ -19,7 +19,7 @@ function getStyle(theme) {
   return {
     container: {
       background: "#fff",
-      border: "1px solid #eee",
+      border: `1px solid ${theme.codeBorder}`,
       borderRadius: "2px",
       boxSizing: "border-box",
       position: "relative",

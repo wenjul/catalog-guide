@@ -1,4 +1,4 @@
-/*! Catalog v1.0.3 undefined */
+/*! Catalog v1.0.4 undefined */
 import PropTypes from 'prop-types';
 import createEmotion from 'create-emotion';
 import React, { Component, Children, PureComponent, createElement, isValidElement } from 'react';
@@ -138,6 +138,10 @@ var DefaultTheme = {
   bgLight: "#F2F2F2",
   bgDark: "#333333",
   bgSourceCode: "#F4F2F0",
+
+  // inlinecode && code border
+  tagBorder: "#eee",
+  codeBorder: "#eee",
 
   // Keys appear to be PrismJS token types.
   codeStyles: {
@@ -1742,7 +1746,7 @@ var CodeSpan = styled("code", function (props, _ref3) {
   var theme = _ref3.theme;
   return {
     background: theme.bgLight,
-    border: "1px solid #eee",
+    border: "1px solid " + theme.tagBorder,
     borderRadius: 1,
     display: "inline-block",
     fontFamily: theme.fontMono,
@@ -2321,7 +2325,7 @@ function getStyle$3(theme) {
   return {
     container: {
       background: "#fff",
-      border: "1px solid #eee",
+      border: "1px solid " + theme.codeBorder,
       borderRadius: "2px",
       boxSizing: "border-box",
       position: "relative",
@@ -4971,7 +4975,7 @@ ListItem$1.propTypes = {
 };
 
 function style$2(theme) {
-  var logoBottomMargin = getFontSize(theme, 5);
+  var logoBottomMargin = getFontSize(theme, 2);
 
   return {
     bar: {
@@ -5048,12 +5052,15 @@ var Menu = function (_React$Component) {
         pageTree = _props.pageTree,
         logoSrc = _props.logoSrc,
         title = _props.title,
-        basePath = _props.basePath;
+        basePath = _props.basePath,
+        subTitle = _props.subTitle;
 
 
     var currentStyle = style$2(theme);
 
     var titleString = title ? title : "";
+
+    var subTitleString = subTitle ? subTitle : "";
 
     return React.createElement(
       "div",
@@ -5062,11 +5069,11 @@ var Menu = function (_React$Component) {
         "div",
         { className: /*#__PURE__*/ /*#__PURE__*/css({ flexGrow: 1 }, "label:Menu;", "label:className;") },
         React.createElement(
-          Link$1,
-          { to: basePath, className: /*#__PURE__*/ /*#__PURE__*/css({ textDecoration: "none" }, "label:Menu;", "label:className;") },
+          "h1",
+          { className: /*#__PURE__*/ /*#__PURE__*/css(currentStyle.h1, "label:Menu;", "label:className;") },
           React.createElement(
-            "h1",
-            { className: /*#__PURE__*/ /*#__PURE__*/css(currentStyle.h1, "label:Menu;", "label:className;") },
+            Link$1,
+            { to: basePath, className: /*#__PURE__*/ /*#__PURE__*/css({ textDecoration: "none" }, "label:Menu;", "label:className;") },
             logoSrc ? React.createElement(
               "div",
               {
@@ -5084,6 +5091,11 @@ var Menu = function (_React$Component) {
               { className: /*#__PURE__*/ /*#__PURE__*/css(currentStyle.title, "label:Menu;", "label:className;") },
               titleString
             )
+          ),
+          React.createElement(
+            "div",
+            { className: true },
+            subTitleString
           )
         ),
         React.createElement(
@@ -5107,7 +5119,8 @@ Menu.propTypes = {
   theme: PropTypes.object.isRequired,
   logoSrc: PropTypes.string,
   basePath: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  subTitle: PropTypes.string
 };
 
 Menu.defaultProps = {
@@ -5164,6 +5177,7 @@ var CatalogContext = function (_Component) {
   CatalogContext.prototype.getChildContext = function getChildContext() {
     var _props$configuration = this.props.configuration,
         title = _props$configuration.title,
+        subTitle = _props$configuration.subTitle,
         theme = _props$configuration.theme,
         responsiveSizes = _props$configuration.responsiveSizes,
         logoSrc = _props$configuration.logoSrc,
@@ -5188,6 +5202,7 @@ var CatalogContext = function (_Component) {
         theme: theme,
         responsiveSizes: responsiveSizes,
         title: title,
+        subTitle: subTitle,
         pages: pages.filter(function (p) {
           return !p.hideFromMenu;
         }),

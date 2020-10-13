@@ -12,3 +12,4 @@ node_modules
 /cli/lib
 /examples/**/build
 /docs/build
+.history
